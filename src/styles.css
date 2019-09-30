@@ -1,0 +1,16 @@
+body {
+  font-family: sans-serif;
+}
+
+#canvasGame {
+  background: rgb(12, 11, 11);
+  display: block;
+  margin: auto;
+  border: 2px solid rgb(224, 159, 37);
+}
+
+#ballImg {
+  width: 15px;
+  height: 15px;
+  display: none;
+}
