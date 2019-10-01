@@ -14,7 +14,7 @@ export default class Ball {
       y: this.screenHeight - 45
     };
 
-    this.speed = { x: 4, y: -3 };
+    this.speed = { x: 7, y: -5 };
   }
 
   draw(ctx) {
