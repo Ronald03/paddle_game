@@ -1,4 +1,4 @@
-import { detectColision } from "./collisionDetection.js";
+import { detectCollision } from "./collisionDetection.js";
 
 export default class Ball {
   constructor(game) {
@@ -16,7 +16,7 @@ export default class Ball {
       y: this.screenHeight - 45
     };
 
-    this.speed = { x: 7, y: -5 };
+    this.speed = { x: 4, y: -2 };
   }
 
   draw(ctx) {
@@ -38,7 +38,11 @@ export default class Ball {
     if (this.position.x < 0 || this.position.x + this.size > this.screenWidth)
       this.speed.x = -this.speed.x;
 
-    if (detectColision(this, this.game.paddle)) {
+    //Collision wall up or down
+    if (this.position.y < 0 || this.position.y + this.size > this.screenHeight)
+      this.speed.y = -this.speed.y;
+
+    if (detectCollision(this, this.game.paddle)) {
       this.speed.y = -this.speed.y;
       this.position.y = this.game.paddle.position.y - this.size;
     }
