@@ -12,13 +12,13 @@ export function detectCollision(ball, gameObject) {
   let rightSideOfObject = gameObject.position.x + gameObject.width;
 
   let bottomOfObject = gameObject.position.y + gameObject.height;
-  
+
 
   if (
     bottomOfBall >= topOfObject &&
-    topOfBall <= bottomOfBall &&
-    ball.position.x >= leftSideOfObject &&
-    ball.position.x +ball.size <= rightSideOfObject
+    topOfBall <= bottomOfObject &&
+    ball.position.x >= leftSideOfObject +ball.size &&
+    ball.position.x <= rightSideOfObject +ball.size
   ) {
     return true;
   } else {
