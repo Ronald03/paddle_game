@@ -1,4 +1,4 @@
-import { detectCollision } from "./collisionDetection.js";
+import { distance, detectCollision } from "./collisionDetection.js";
 
 export default class Ball {
   constructor(game) {
@@ -16,7 +16,7 @@ export default class Ball {
       y: this.screenHeight - 45
     };
 
-    this.speed = { x: 4, y: -2 };
+    this.speed = { x: 7, y: -7 };
   }
 
   draw(ctx) {
@@ -34,6 +34,7 @@ export default class Ball {
 
     this.position.y += this.speed.y;
 
+    
     //Collision wall left or right
     if (this.position.x < 0 || this.position.x + this.size > this.screenWidth)
       this.speed.x = -this.speed.x;
