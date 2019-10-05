@@ -16,8 +16,7 @@ function gameLoop(timeStamp) {
   lastTime = timeStamp;
 
   ctx.clearRect(0, 0, game.screenWidth, game.screenHeight);
-  ctx.fillStyle = "rbg(255,255,255)";
-  ctx.fill();
+ 
 
   game.update(deltaTime);
 

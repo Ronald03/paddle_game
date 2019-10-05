@@ -50,14 +50,14 @@ export default class Game {
     });
 
     if(this.gamestate === GAMESTATE.PAUSE) {
-      ctx.rect(0,0, this.screeWidth, this.screenHeight);
-      ctx.fillStyle = "rgb(51, 102, 255)";
+      ctx.rect(0,0, this.screenWidth, this.screenHeight);
+      ctx.fillStyle = "rgba(51, 102, 255, 0.5)";
       ctx.fill();
 
       ctx.font = "30px Arial";
       ctx.fillStyle = "white";
       ctx.textAlign = "center"; 
-      ctx.fillText("Pause", this.screeWidth/2, this.screenHeight/2);
+      ctx.fillText("Pause", this.screenWidth/2, this.screenHeight/2);
     }
   }
 
