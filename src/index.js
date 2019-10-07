@@ -8,7 +8,6 @@ const SCREEN_HEIGHT = canvas.getAttribute("height");
 
 let game = new Game(SCREEN_WIDTH, SCREEN_HEIGHT);
 
-game.start();
 let lastTime = 0;
 
 function gameLoop(timeStamp) {
@@ -16,7 +15,6 @@ function gameLoop(timeStamp) {
   lastTime = timeStamp;
 
   ctx.clearRect(0, 0, game.screenWidth, game.screenHeight);
- 
 
   game.update(deltaTime);
 
