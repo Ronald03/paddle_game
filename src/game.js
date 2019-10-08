@@ -2,6 +2,7 @@ import "./styles.css";
 import Paddle from "./paddle.js";
 import InputHandler from "./input.js";
 import Ball from "./ball.js";
+import Player from "./player.js";
 import { buildLevel, levels } from "./levels.js";
 
 //This class is the one that put everything together
@@ -15,11 +16,14 @@ const GAMESTATE = {
 };
 
 export default class Game {
-  constructor(screeWidth, screenHeight) {
+  constructor(screeWidth, screenHeight, input) {
     //starts with identifying the gaming area
     this.screenWidth = screeWidth;
 
     this.screenHeight = screenHeight;
+
+    //get input from player
+    this.input = input;
 
     //The game initiates at the Meny screen
     this.gamestate = GAMESTATE.MENU;
@@ -149,6 +153,7 @@ export default class Game {
       this.screenWidth / 2,
       this.screenHeight / 2
     );
+    this.input.style.display = "block";
   }
 
   gameoverScreen(ctx) {

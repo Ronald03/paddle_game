@@ -5,7 +5,8 @@ body {
 #canvasGame {
   background: rgb(12, 11, 11);
   display: block;
-  margin: auto;
+  position: absolute;
+  left: 0;
   border: 2px solid rgb(224, 159, 37);
 }
 
@@ -19,4 +20,36 @@ body {
   display: none;
   width: 80px;
   height: 20px;
+}
+
+#playerInput {
+  position: absolute;
+  top: 150px;
+  left: 225px;
+  display: none;
+}
+
+#canvasHolder {
+  position: relative;
+  background: orange;
+  width: 700px;
+  height: 500px;
+}
+
+#display {
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background: black;
+  left: 600px;
+  color: white;
+  text-align: center;
+}
+
+label {
+  width: 100%;
+  padding: 10px;
+  font-weight: 600;
+  margin-top: 10px;
+  color: red;
 }
