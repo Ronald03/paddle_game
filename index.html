@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>ThepaddleGame</title>
+    <meta charset="UTF-8" />
 
-<head>
-	<title>ThepaddleGame</title>
-	<meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="src/styles.css" />
+    <script src="src/index.js"></script>
+  </head>
 
-	<link rel = "stylesheet" type = "text/css" href = "src/styles.css" />
-	<script src="src/index.js"></script>
+  <body>
+    <img id="brickImg" src="src/images/brick/brick.png" />
+    <img id="ballImg" src="src/images/ball/metalBall.png" />
 
-</head>
+    <div id="canvasHolder">
+      <input type="text" id="playerInput" required />
+      <canvas id="canvasGame" width="600" height="500"></canvas>
 
-<body>
-	<img id="brickImg" src="src/images/brick/brick.png">
-	<img id="ballImg" src="src/images/ball/metalBall.png">
-	
-	<div id="canvasHolder"> 
-		<input type="text" id="playerInput">
-		<canvas id="canvasGame" width="600" height="500"></canvas>
-
-		<div id="display"> 
-			<label class="inline">Player:</label>
-			<span class="inline">Ronald</span>	
-			<br><br>
-			<label class="inline">Score:</label>
-			<span class="inline">4231235</span>	
-			<br><br>
-			<label class="inline">Highest Score:</label>
-			<span class="inline">2125454</span>	
-			<br><br>
-			<label class="inline">Level:</label>
-			<span class="inline">4</span>	
-
-		</div>
-		
-	</div>
-	
-	
-
-</body>
-
+      <div id="display">
+        <label class="inline">Player:</label>
+        <span id="pName" class="inline"></span>
+        <br /><br />
+        <label class="inline">Score:</label>
+        <span id="score" class="inline">0</span>
+        <br /><br />
+        <label class="inline">Highest Score:</label>
+        <span id="hScore" class="inline">0</span>
+        <br /><br />
+        <label class="inline">Level:</label>
+        <span id="lvl" class="inline"></span>
+      </div>
+    </div>
+  </body>
 </html>

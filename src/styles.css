@@ -8,6 +8,7 @@ body {
   position: absolute;
   left: 0;
   border: 2px solid rgb(224, 159, 37);
+  z-index: 1;
 }
 
 #ballImg {
@@ -27,6 +28,7 @@ body {
   top: 150px;
   left: 225px;
   display: none;
+  z-index: 2;
 }
 
 #canvasHolder {

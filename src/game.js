@@ -16,17 +16,24 @@ const GAMESTATE = {
 };
 
 export default class Game {
-  constructor(screeWidth, screenHeight, input) {
+  constructor(screeWidth, screenHeight, playerBoard) {
     //starts with identifying the gaming area
     this.screenWidth = screeWidth;
 
     this.screenHeight = screenHeight;
 
+    this.board = playerBoard;
+
     //get input from player
-    this.input = input;
+    //this.input = playerBoard.input;
+
+    this.nameEntered = false;
 
     //The game initiates at the Meny screen
     this.gamestate = GAMESTATE.MENU;
+
+    //Instantiate a player
+    this.player = new Player();
 
     //create instance of the ball
     this.ball = new Ball(this);
@@ -57,12 +64,15 @@ export default class Game {
     //define the main screen when game opens
     //This condition prevents game from starting as soon as page loads
     if (
-      this.gamestate !== GAMESTATE.MENU &&
-      this.gamestate !== GAMESTATE.NEWLEVEL
+      (this.gamestate !== GAMESTATE.MENU &&
+        this.gamestate !== GAMESTATE.NEWLEVEL) ||
+      this.player.name === ""
     )
       return;
 
-    //Game plays if it is not on one of th ESTATES showing above
+    //Show level being played on the board
+    this.board.lvl.innerHTML = this.currentLevel + 1;
+
     //Indicates game to start at level being play (current level)
     this.bricks = buildLevel(this, this.levels[this.currentLevel]);
 
@@ -104,6 +114,12 @@ export default class Game {
 
     //Filter out (remove) the bricks with markedForDeletion === true
     this.bricks = this.bricks.filter(brick => !brick.markedForDeletion);
+
+    //update the Score board everytime a brick get hit
+    this.board.score.innerHTML = this.player.score;
+
+    //Show Highest Score
+    this.board.hScore.innerHTML = this.player.highScore;
   }
 
   draw(ctx) {
@@ -153,7 +169,15 @@ export default class Game {
       this.screenWidth / 2,
       this.screenHeight / 2
     );
-    this.input.style.display = "block";
+    //Show the input for the player's name on the menu screen
+    this.board.input.style.display = "block";
+
+    if (this.nameEntered) {
+      //if player entered name
+      this.board.input.style.display = "none"; //Remove the input
+      this.player.name = this.board.input.value; //Save the name of the player
+      this.board.pName.innerHTML = this.player.name; //show the name of player on the board
+    }
   }
 
   gameoverScreen(ctx) {

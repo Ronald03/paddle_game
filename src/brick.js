@@ -9,7 +9,7 @@ export default class Brick {
     //grab image of brick
     this.brick = document.getElementById("brickImg");
 
-  //define dimesion of bricks
+    //define dimesion of bricks
     this.width = 60;
     this.height = 24;
 
@@ -18,22 +18,26 @@ export default class Brick {
 
     //Identify which brick should be deleted when ball hits it
     this.markedForDeletion = false;
+
+    //value of brick
+    this.points = 10;
   }
 
-  
   //Update changes on the bricks
   update() {
     //check for collision with ball
     if (detectCollision(this.game.ball, this)) {
       this.game.ball.speed.y = -this.game.ball.speed.y;
-
+      this.game.player.setScore(this.points);
+      this.game.player.setHighScore();
+      //console.log(this.game.player.score);
       //Flag brick to be deleted if ball hit it
       this.markedForDeletion = true;
     }
   }
 
   draw(ctx) {
-    // Draw brick to the context of canvas 
+    // Draw brick to the context of canvas
     ctx.drawImage(
       this.brick,
       this.position.x,

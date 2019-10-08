@@ -7,13 +7,21 @@ var canvas = document.getElementById("canvasGame");
 var ctx = canvas.getContext("2d");
 
 //Player input name
-let INPUT = document.getElementById("playerInput");
+//let INPUT = ;
+let player = {
+  input: document.getElementById("playerInput"),
+  pName: document.getElementById("pName"),
+  score: document.getElementById("score"),
+  hScore: document.getElementById("hScore"),
+  lvl: document.getElementById("lvl")
+};
+
 //Capture dimenssions of the canvas (gaming area)
 const SCREEN_WIDTH = canvas.getAttribute("width");
 const SCREEN_HEIGHT = canvas.getAttribute("height");
 
 // Instanciate a new game to be run on the game loop
-let game = new Game(SCREEN_WIDTH, SCREEN_HEIGHT, INPUT);
+let game = new Game(SCREEN_WIDTH, SCREEN_HEIGHT, player);
 
 let lastTime = 0;
 

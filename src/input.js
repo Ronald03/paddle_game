@@ -29,5 +29,17 @@ export default class InputHandler {
         default:
       }
     });
+
+    if (game.gamestate === 2) {
+      game.board.input.addEventListener("keydown", event => {
+        switch (event.keyCode) {
+          case 13:
+            game.player.name = game.board.input.value;
+            if (game.player.name !== "") game.nameEntered = true;
+            break;
+          default:
+        }
+      });
+    }
   }
 }
