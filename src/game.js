@@ -94,7 +94,8 @@ export default class Game {
     if (
       this.gamestate === GAMESTATE.PAUSE ||
       this.gamestate === GAMESTATE.MENU ||
-      this.gamestate === GAMESTATE.GAMEOVER
+      this.gamestate === GAMESTATE.GAMEOVER ||
+      this.gamestate === GAMESTATE.NEWLEVEL
     )
       return;
 
@@ -103,7 +104,7 @@ export default class Game {
     if (this.bricks.length === 0) {
       this.currentLevel++; //Move to next level
       this.gamestate = GAMESTATE.NEWLEVEL; //displays next level screen
-      this.start(); // start game again but now at new level
+      //this.start(); // start game again but now at new level
     }
 
     //Hold all objects and all bricks in one array
@@ -135,6 +136,8 @@ export default class Game {
     if (this.gamestate === GAMESTATE.MENU) this.menuScreen(ctx);
 
     if (this.gamestate === GAMESTATE.GAMEOVER) this.gameoverScreen(ctx);
+
+    if (this.gamestate === GAMESTATE.NEWLEVEL) this.nextlvlScreen(ctx);
   }
 
   togglePause() {
@@ -191,5 +194,18 @@ export default class Game {
     ctx.fillText("GAME OVER", this.screenWidth / 2, this.screenHeight / 2);
   }
 
-  nextlvlScreen() {}
+  nextlvlScreen(ctx) {
+    ctx.rect(0, 0, this.screenWidth, this.screenHeight);
+    ctx.fillStyle = "rgba(51, 102, 255, 0.5)";
+    ctx.fill();
+
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
+    ctx.textAlign = "center";
+    ctx.fillText(
+      "Press SPACE bar to move to next level",
+      this.screenWidth / 2,
+      this.screenHeight / 2
+    );
+  }
 }

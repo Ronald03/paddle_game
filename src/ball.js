@@ -2,9 +2,9 @@ import { detectCollision } from "./collisionDetection.js";
 
 export default class Ball {
   constructor(game) {
-    // Grab the ball image 
+    // Grab the ball image
     this.ball = document.getElementById("ballImg");
-    
+
     //define the size of the ball
     this.size = 15;
 
@@ -16,7 +16,7 @@ export default class Ball {
     //Create an instance of the game class
     this.game = game;
 
-    //Set the initial position of the ball 
+    //Set the initial position of the ball
     this.reset();
   }
 
@@ -31,7 +31,7 @@ export default class Ball {
   }
 
   draw(ctx) {
-    //Draw image of ball on the screen 
+    //Draw image of ball on the screen
     ctx.drawImage(
       this.ball,
       this.position.x,
@@ -57,7 +57,7 @@ export default class Ball {
     //bottom of game
     if (this.position.y + this.size > this.screenHeight) {
       this.game.gameLives--;
-      
+
       //reset ball to initial position
       this.reset();
     }

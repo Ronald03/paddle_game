@@ -29,6 +29,12 @@ body {
   left: 225px;
   display: none;
   z-index: 2;
+  height: 50px;
+  width: 175px;
+  font-size: 25px;
+  font-family: "Monoton";
+  color: rgb(119, 196, 5);
+  background-color: transparent;
 }
 
 #canvasHolder {
