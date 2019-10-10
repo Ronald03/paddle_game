@@ -35,11 +35,11 @@ export default class Game {
     //Instantiate a player
     this.player = new Player();
 
-    //create instance of the ball
-    this.ball = new Ball(this);
-
     //create instance of the Paddle
     this.paddle = new Paddle(this);
+
+    //create instance of the ball
+    this.ball = new Ball(this);
 
     //create instance of Input handler
     new InputHandler(this.paddle, this);
@@ -140,7 +140,10 @@ export default class Game {
 
     if (this.gamestate === GAMESTATE.GAMEOVER) this.gameoverScreen(ctx);
 
-    if (this.gamestate === GAMESTATE.NEWLEVEL) this.nextlvlScreen(ctx);
+    if (this.gamestate === GAMESTATE.NEWLEVEL) {
+      this.nextlvlScreen(ctx);
+      this.ball.reset();
+    }
   }
 
   togglePause() {
@@ -206,25 +209,30 @@ export default class Game {
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(
-      "Press SPACE bar to move to next level",
+      "Press SHIFT to move to next level",
       this.screenWidth / 2,
       this.screenHeight / 2
     );
   }
 
   movePaddleBallLeft(padObj, ballObj) {
-    //console.log(padObj.leftEdge - ballObj.position.x);
     let midPointLeft = padObj.leftEdge + padObj.width / 2 - ballObj.size / 2;
-    padObj.position.x -= 7;
-    ballObj.position.x -= 7;
+
+    padObj.position.x -= 10;
+
+    ballObj.position.x -= 10;
+
     if (padObj.position.x <= 0) ballObj.position.x = midPointLeft;
   }
 
   movePaddleBallRight(padObj, ballObj) {
     let midPointRight =
       padObj.screenWidth - padObj.width / 2 - ballObj.size / 2;
-    padObj.position.x += 7;
-    ballObj.position.x += 7;
+
+    padObj.position.x += 10;
+
+    ballObj.position.x += 10;
+
     if (padObj.position.x >= padObj.rightEdge)
       ballObj.position.x = midPointRight;
   }

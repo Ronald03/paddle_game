@@ -13,7 +13,10 @@ export default class Paddle {
 
     this.leftEdge = 0;
     this.rightEdge = this.screenWidth - this.width;
+    this.initPos();
+  }
 
+  initPos() {
     this.position = {
       x: this.screenWidth / 2 - this.width / 2,
       y: this.screenHeight - this.height - 10

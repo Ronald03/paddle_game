@@ -23,8 +23,13 @@ export default class InputHandler {
           if (!game.isGameInitiated) {
             game.isGameInitiated = true;
           }
-
           game.start();
+          break;
+        case 32:
+          if (game.isGameInitiated) {
+            game.ball.rollBall();
+            game.isGameInitiated = false;
+          }
           break;
         default:
       }

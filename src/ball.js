@@ -20,13 +20,20 @@ export default class Ball {
     this.reset();
   }
 
+  rollBall() {
+    this.speed = { x: 7, y: -7 };
+  }
+
   reset() {
     //This defines the initial position of the ball and its speed
+    this.game.paddle.initPos();
     this.position = {
-      x: this.screenWidth / 2 - this.size / 2,
+      x:
+        this.game.paddle.position.x +
+        this.game.paddle.width / 2 -
+        this.size / 2,
       y: this.screenHeight - 45
     };
-
     this.speed = { x: 0, y: -0 };
   }
 
@@ -60,6 +67,7 @@ export default class Ball {
 
       //reset ball to initial position
       this.reset();
+      this.game.isGameInitiated = true;
     }
     //Detects collision with paddle
     if (detectCollision(this, this.game.paddle)) {
