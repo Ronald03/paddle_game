@@ -3,15 +3,27 @@ export default class InputHandler {
     document.addEventListener("keydown", event => {
       switch (event.keyCode) {
         case 37:
-          paddle.moveLeft();
+          if (game.isGameInitiated) {
+            game.movePaddleBallLeft(paddle, game.ball);
+          } else {
+            paddle.moveLeft();
+          }
           break;
         case 39:
-          paddle.moveRight();
+          if (game.isGameInitiated) {
+            game.movePaddleBallRight(paddle, game.ball);
+          } else {
+            paddle.moveRight();
+          }
           break;
-        case 27:
+        case 87:
           game.togglePause();
           break;
-        case 32:
+        case 16:
+          if (!game.isGameInitiated) {
+            game.isGameInitiated = true;
+          }
+
           game.start();
           break;
         default:

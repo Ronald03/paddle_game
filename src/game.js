@@ -58,6 +58,9 @@ export default class Game {
 
     //Start game on first level (from levels array index 0)
     this.currentLevel = 0;
+
+    //Is game initiated
+    this.isGameInitiated = false;
   }
 
   start() {
@@ -168,7 +171,7 @@ export default class Game {
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(
-      "Press SPACE bar to start game",
+      "Press Left Shift to start game",
       this.screenWidth / 2,
       this.screenHeight / 2
     );
@@ -207,5 +210,22 @@ export default class Game {
       this.screenWidth / 2,
       this.screenHeight / 2
     );
+  }
+
+  movePaddleBallLeft(padObj, ballObj) {
+    //console.log(padObj.leftEdge - ballObj.position.x);
+    let midPointLeft = padObj.leftEdge + padObj.width / 2 - ballObj.size / 2;
+    padObj.position.x -= 7;
+    ballObj.position.x -= 7;
+    if (padObj.position.x <= 0) ballObj.position.x = midPointLeft;
+  }
+
+  movePaddleBallRight(padObj, ballObj) {
+    let midPointRight =
+      padObj.screenWidth - padObj.width / 2 - ballObj.size / 2;
+    padObj.position.x += 7;
+    ballObj.position.x += 7;
+    if (padObj.position.x >= padObj.rightEdge)
+      ballObj.position.x = midPointRight;
   }
 }
