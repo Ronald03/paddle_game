@@ -5,6 +5,8 @@ export default class Player {
     this.score = 0;
 
     this.highScore = 0;
+
+    this.lives = 3;
   }
 
   setScore(newScore) {

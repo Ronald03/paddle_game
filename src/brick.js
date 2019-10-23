@@ -2,12 +2,16 @@ import { detectCollision } from "./collisionDetection.js";
 
 export default class Brick {
   // Pass an instance of the game class to constructor
-  constructor(game, position) {
+  constructor(game, position, brickColor) {
+    this.brickList = [
+      document.getElementById("purpleBrick"),
+      document.getElementById("greenBrick")
+    ];
     // Instance of game class
     this.game = game;
 
     //grab image of brick
-    this.brick = document.getElementById("brickImg");
+    this.brick = this.brickList[brickColor];
 
     //define dimesion of bricks
     this.width = 60;

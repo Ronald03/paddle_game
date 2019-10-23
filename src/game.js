@@ -48,7 +48,7 @@ export default class Game {
     this.gameObjects = [];
 
     //Player starts with 3 lives
-    this.gameLives = 5;
+    this.gameLives = this.player.lives;
 
     //Array will hold bricks of each level
     this.bricks = [];
@@ -124,6 +124,9 @@ export default class Game {
 
     //Show Highest Score
     this.board.hScore.innerHTML = this.player.highScore;
+
+    //display Lives available
+    this.board.lives.innerHTML = this.gameLives;
   }
 
   draw(ctx) {

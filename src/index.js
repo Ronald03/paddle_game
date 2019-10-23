@@ -13,7 +13,8 @@ let player = {
   pName: document.getElementById("pName"),
   score: document.getElementById("score"),
   hScore: document.getElementById("hScore"),
-  lvl: document.getElementById("lvl")
+  lvl: document.getElementById("lvl"),
+  lives: document.getElementById("lives")
 };
 
 //Capture dimenssions of the canvas (gaming area)
