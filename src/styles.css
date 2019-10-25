@@ -11,7 +11,7 @@ body {
   z-index: 1;
 }
 
-#ballImg {
+.ballImg {
   width: 15px;
   height: 15px;
   display: none;

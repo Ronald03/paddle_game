@@ -1,4 +1,5 @@
 import Brick from "./brick.js";
+import Powerup from "./powerUps.js";
 
 export function buildLevel(game, level) {
   let bricks = [];
@@ -17,6 +18,14 @@ export function buildLevel(game, level) {
           y: 50 + 24 * rowIndex
         };
         bricks.push(new Brick(game, position, 1));
+      } else if (brick === 22) {
+        let position = {
+          x: 60 * brickIndex,
+          y: 50 + 24 * rowIndex
+        };
+        let brk = new Brick(game, position, 1);
+        bricks.push(new Powerup(brk, game));
+        bricks.push(brk);
       }
     });
   });
@@ -28,7 +37,7 @@ export function levels() {
   const level1 = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 1, 1, 2, 2, 2, 2, 2],
+    [1, 1, 1, 1, 1, 2, 2, 2, 2, 22],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
   ];

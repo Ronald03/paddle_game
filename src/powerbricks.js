@@ -1,7 +1,7 @@
 import { detectCollision } from "./collisionDetection.js";
-//import Powerup from "./powerUps.js";
+import Powerup from "./powerUps.js";
 
-export default class Brick {
+export default class PowerBrick {
   // Pass an instance of the game class to constructor
   constructor(game, position, brickColor) {
     this.brickList = [
@@ -27,6 +27,8 @@ export default class Brick {
 
     //value of brick
     this.points = 10;
+
+    this.powerBall = new Powerup(position, game);
   }
 
   //Update changes on the bricks
@@ -44,6 +46,13 @@ export default class Brick {
 
   draw(ctx) {
     // Draw brick to the context of canvas
+    ctx.drawImage(
+      this.powerBall.speedBall,
+      this.position.x,
+      this.position.y,
+      this.powerBall.width,
+      this.powerBall.height
+    );
     ctx.drawImage(
       this.brick,
       this.position.x,

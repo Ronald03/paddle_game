@@ -4,6 +4,7 @@ import InputHandler from "./input.js";
 import Ball from "./ball.js";
 import Player from "./player.js";
 import { buildLevel, levels } from "./levels.js";
+//import Powerup from "./powerUps.js";
 
 //This class is the one that put everything together
 
@@ -40,6 +41,9 @@ export default class Game {
 
     //create instance of the ball
     this.ball = new Ball(this);
+
+    //power Up
+    //this.powerup = new Powerup(this);
 
     //create instance of Input handler
     new InputHandler(this.paddle, this);

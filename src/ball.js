@@ -3,7 +3,7 @@ import { detectCollision } from "./collisionDetection.js";
 export default class Ball {
   constructor(game) {
     // Grab the ball image
-    this.ball = document.getElementById("ballImg");
+    this.ball = document.getElementById("metalBall");
 
     //define the size of the ball
     this.size = 15;
@@ -21,7 +21,7 @@ export default class Ball {
   }
 
   rollBall() {
-    this.speed = { x: 7, y: -7 };
+    this.speed = { x: 1, y: -1 };
   }
 
   reset() {
@@ -62,7 +62,7 @@ export default class Ball {
     if (this.position.y < 0) this.speed.y = -this.speed.y;
 
     //bottom of game
-    if (this.position.y + this.size > this.screenHeight) {
+    if (this.position.y - this.size > this.screenHeight) {
       this.game.gameLives--;
 
       //reset ball to initial position
