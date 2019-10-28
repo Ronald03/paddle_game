@@ -21,7 +21,7 @@ export default class Ball {
   }
 
   rollBall() {
-    this.speed = { x: 1, y: -1 };
+    this.speed = { x: 2, y: -2 };
   }
 
   reset() {

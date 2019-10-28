@@ -12,8 +12,12 @@ export default class Paddle {
     this.speed = 0;
 
     this.leftEdge = 0;
-    this.rightEdge = this.screenWidth - this.width;
+    //this.rightEdge = this.screenWidth - this.width;
     this.initPos();
+  }
+
+  rightEdge() {
+    return this.screenWidth - this.width;
   }
 
   initPos() {
@@ -44,6 +48,6 @@ export default class Paddle {
     this.position.x += this.speed;
 
     if (this.position.x <= this.leftEdge) this.position.x = 0;
-    if (this.position.x >= this.rightEdge) this.position.x = this.rightEdge;
+    if (this.position.x >= this.rightEdge()) this.position.x = this.rightEdge();
   }
 }

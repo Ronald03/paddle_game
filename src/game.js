@@ -240,7 +240,7 @@ export default class Game {
 
     ballObj.position.x += 10;
 
-    if (padObj.position.x >= padObj.rightEdge)
+    if (padObj.position.x >= padObj.rightEdge())
       ballObj.position.x = midPointRight;
   }
 }

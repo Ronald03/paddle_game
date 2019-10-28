@@ -3,18 +3,59 @@
 
 export default class Powerup {
   constructor(brick, game) {
-    this.speedBall = document.getElementById("speedBall");
+    //this.speedBall = this.power.image;//document.getElementById("speedBall");
     this.position = brick.position;
     this.size = 30;
+    this.markedForDeletion = false;
+
     this.brick = brick;
 
     this.paddle = game.paddle;
-    this.markedForDeletion = false;
+    this.ball = game.ball;
+
+    this.power = [
+      {
+        image: document.getElementById("speedBall"),
+        name: "speedBall",
+        paddle: this.paddle,
+        ball: this.ball,
+        feature: function() {
+          this.paddle.width = 200;
+        }
+      },
+      {
+        image: document.getElementById("smallBall"),
+        name: "smallBall",
+        paddle: this.paddle,
+        ball: this.ball,
+        feature: function() {
+          this.ball.size = 10;
+        }
+      },
+      {
+        image: document.getElementById("bigpaddle"),
+        name: "bigpaddle",
+        paddle: this.paddle,
+        ball: this.ball,
+        feature: function() {
+          this.paddle.width = 200;
+        }
+      },
+      {
+        image: document.getElementById("smallpaddle"),
+        name: "smallpaddle",
+        paddle: this.paddle,
+        ball: this.ball,
+        feature: function() {
+          this.paddle.width = 200;
+        }
+      }
+    ];
   }
 
   draw(ctx) {
     ctx.drawImage(
-      this.speedBall,
+      this.power[0].image,
       this.position.x,
       this.position.y,
       this.size,
@@ -28,6 +69,7 @@ export default class Powerup {
     }
 
     if (this.position.y + 20 >= this.paddle.position.y) {
+      this.power[0].feature();
       this.markedForDeletion = true;
     }
   }
