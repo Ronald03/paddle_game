@@ -26,9 +26,7 @@ export default class PowerBrick {
     this.markedForDeletion = false;
 
     //value of brick
-    this.points = 10;
-
-    this.powerBall = new Powerup(position, game);
+    this.points = 15;
   }
 
   //Update changes on the bricks

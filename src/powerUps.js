@@ -2,7 +2,7 @@
 //import Brick from "./brick.js";
 
 export default class Powerup {
-  constructor(brick, game) {
+  constructor(brick, game, pwrup) {
     //this.speedBall = this.power.image;//document.getElementById("speedBall");
     this.position = brick.position;
     this.size = 30;
@@ -13,6 +13,8 @@ export default class Powerup {
     this.paddle = game.paddle;
     this.ball = game.ball;
 
+    this.up = pwrup;
+
     this.power = [
       {
         image: document.getElementById("speedBall"),
@@ -20,11 +22,11 @@ export default class Powerup {
         paddle: this.paddle,
         ball: this.ball,
         feature: function() {
-          this.paddle.width = 200;
+          this.ball.speed = { x: 5, y: -5 };
         }
       },
       {
-        image: document.getElementById("smallBall"),
+        image: document.getElementById("smallball"),
         name: "smallBall",
         paddle: this.paddle,
         ball: this.ball,
@@ -47,7 +49,7 @@ export default class Powerup {
         paddle: this.paddle,
         ball: this.ball,
         feature: function() {
-          this.paddle.width = 200;
+          this.paddle.width = 100;
         }
       }
     ];
@@ -55,7 +57,7 @@ export default class Powerup {
 
   draw(ctx) {
     ctx.drawImage(
-      this.power[0].image,
+      this.power[this.up].image,
       this.position.x,
       this.position.y,
       this.size,
@@ -69,7 +71,7 @@ export default class Powerup {
     }
 
     if (this.position.y + 20 >= this.paddle.position.y) {
-      this.power[0].feature();
+      this.power[this.up].feature();
       this.markedForDeletion = true;
     }
   }
