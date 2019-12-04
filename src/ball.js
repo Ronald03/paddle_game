@@ -16,12 +16,14 @@ export default class Ball {
     //Create an instance of the game class
     this.game = game;
 
+    this.speed = { x: 0, y: -0 };
+
     //Set the initial position of the ball
     this.reset();
   }
 
   rollBall() {
-    this.speed = { x: 2, y: -2 };
+    this.speed = { x: 5, y: -5 };
   }
 
   reset() {

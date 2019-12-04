@@ -1,4 +1,4 @@
-//import { detectCollision } from "./collisionDetection.js";
+import { detectCollision } from "./collisionDetection.js";
 //import Brick from "./brick.js";
 
 export default class Powerup {
@@ -22,7 +22,7 @@ export default class Powerup {
         paddle: this.paddle,
         ball: this.ball,
         feature: function() {
-          this.ball.speed = { x: 5, y: -5 };
+          this.ball.speed = { x: 8, y: -1 };
         }
       },
       {
@@ -70,9 +70,15 @@ export default class Powerup {
       this.position.y += 1.5;
     }
 
-    if (this.position.y + 20 >= this.paddle.position.y) {
+    if (detectCollision(this, this.paddle)) {
+      console.log("power up");
       this.power[this.up].feature();
       this.markedForDeletion = true;
     }
+
+    /* if (this.position.y + 20 === this.paddle.position.y) {
+      this.power[this.up].feature();
+      this.markedForDeletion = true;
+    } */
   }
 }

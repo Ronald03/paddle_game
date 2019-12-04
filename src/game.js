@@ -174,16 +174,26 @@ export default class Game {
 
   menuScreen(ctx) {
     ctx.rect(0, 0, this.screenWidth, this.screenHeight);
-    ctx.fillStyle = "rgba(51, 102, 255, 0.5)";
+    ctx.fillStyle = "rgba(51, 202, 255, 0.5)";
     ctx.fill();
 
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText(
-      "Press Left Shift to start game",
+      "Press Shift to start the game",
       this.screenWidth / 2,
       this.screenHeight / 2
+    );
+    ctx.fillText(
+      "Use W key to toggle pause",
+      this.screenWidth / 2,
+      this.screenHeight / 2 + 50
+    );
+    ctx.fillText(
+      "Space Bar to kick-start the ball",
+      this.screenWidth / 2,
+      this.screenHeight / 2 + 100
     );
     //Show the input for the player's name on the menu screen
     this.board.input.style.display = "block";
@@ -205,6 +215,8 @@ export default class Game {
     ctx.fillStyle = "white";
     ctx.textAlign = "center";
     ctx.fillText("GAME OVER", this.screenWidth / 2, this.screenHeight / 2);
+
+    ctx.fillText("Press R to restart the game", this.screenWidth / 2, this.screenHeight / 2 + 40);
   }
 
   nextlvlScreen(ctx) {
