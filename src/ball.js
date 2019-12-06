@@ -16,8 +16,6 @@ export default class Ball {
     //Create an instance of the game class
     this.game = game;
 
-    this.speed = { x: 0, y: -0 };
-
     //Set the initial position of the ball
     this.reset();
   }

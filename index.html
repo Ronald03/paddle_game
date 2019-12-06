@@ -2,10 +2,13 @@
 <html>
   <head>
     <title>ThepaddleGame</title>
+
     <meta charset="UTF-8" />
 
     <link rel="stylesheet" type="text/css" href="src/styles.css" />
+
     <script src="src/index.js"></script>
+
     <link
       href="https://fonts.googleapis.com/css?family=Monoton&display=swap"
       rel="stylesheet"
@@ -13,25 +16,31 @@
   </head>
 
   <body>
+
     <img id="purpleBrick" class="brickImg" src="src/images/brick/pBrick.png" />
+    
     <img id="greenBrick" class="brickImg" src="src/images/brick/gBrick.png" />
 
     <img id="metalBall" class="ballImg" src="src/images/balls/metalBall.png" />
+    
     <img
       id="speedBall"
       class="ballImg"
       src="src/images/balls/power_balls/speedball.png"
     />
+    
     <img
       id="bigpaddle"
       class="ballImg"
       src="src/images/balls/power_balls/bigpaddle.png"
     />
+    
     <img
       id="smallpaddle"
       class="ballImg"
       src="src/images/balls/power_balls/smallpaddle.png"
     />
+    
     <img
       id="smallball"
       class="ballImg"
@@ -39,24 +48,37 @@
     />
 
     <div id="canvasHolder">
+
       <input type="text" id="playerInput" placeholder="Enter name" />
+
       <canvas id="canvasGame" width="600" height="500"></canvas>
 
       <div id="display">
+
         <label class="inline">Player:</label>
+
         <span id="pName" class="inline"></span>
         <br /><br />
+
         <label class="inline">Lives:</label>
+
         <span id="lives" class="inline"></span>
         <br /><br />
+
         <label class="inline">Score:</label>
+
         <span id="score" class="inline">0</span>
         <br /><br />
+
         <label class="inline">Highest Score:</label>
+
         <span id="hScore" class="inline">0</span>
         <br /><br />
+
         <label class="inline">Level:</label>
+
         <span id="lvl" class="inline"></span>
     </div>
+
   </body>
 </html>

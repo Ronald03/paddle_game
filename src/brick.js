@@ -33,10 +33,13 @@ export default class Brick {
   update() {
     //check for collision with ball
     if (detectCollision(this.game.ball, this)) {
+
       this.game.ball.speed.y = -this.game.ball.speed.y;
+
       this.game.player.setScore(this.points);
+
       this.game.player.setHighScore();
-      //console.log(this.game.player.score);
+
       //Flag brick to be deleted if ball hit it
       this.markedForDeletion = true;
     }

@@ -2,31 +2,46 @@ import Brick from "./brick.js";
 import Powerup from "./powerUps.js";
 
 export function buildLevel(game, level) {
+
   let bricks = [];
 
   level.forEach((row, rowIndex) => {
+
     row.forEach((brick, brickIndex) => {
+
       if (brick === 1 || brick === 2) {
+
         let position = {
           x: 60 * brickIndex,
           y: 50 + 24 * rowIndex
         };
+
         bricks.push(new Brick(game, position, brick - 1));
+
       } else if (brick > 10 && brick < 20) {
+
         let position = {
           x: 60 * brickIndex,
           y: 50 + 24 * rowIndex
         };
+
         let brk = new Brick(game, position, 0);
+
         bricks.push(new Powerup(brk, game, brick - 10));
+
         bricks.push(brk);
+
       } else if (brick > 19) {
+
         let position = {
           x: 60 * brickIndex,
           y: 50 + 24 * rowIndex
         };
+
         let brk = new Brick(game, position, 1);
+
         bricks.push(new Powerup(brk, game, brick - 20));
+
         bricks.push(brk);
       }
     });
@@ -36,6 +51,7 @@ export function buildLevel(game, level) {
 }
 
 export function levels() {
+
   const level1 = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

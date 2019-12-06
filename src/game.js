@@ -4,7 +4,6 @@ import InputHandler from "./input.js";
 import Ball from "./ball.js";
 import Player from "./player.js";
 import { buildLevel, levels } from "./levels.js";
-//import Powerup from "./powerUps.js";
 
 //This class is the one that put everything together
 
@@ -25,9 +24,6 @@ export default class Game {
 
     this.board = playerBoard;
 
-    //get input from player
-    //this.input = playerBoard.input;
-
     this.nameEntered = false;
 
     //The game initiates at the Meny screen
@@ -41,9 +37,6 @@ export default class Game {
 
     //create instance of the ball
     this.ball = new Ball(this);
-
-    //power Up
-    //this.powerup = new Powerup(this);
 
     //create instance of Input handler
     new InputHandler(this.paddle, this);
@@ -111,7 +104,6 @@ export default class Game {
     if (this.bricks.length === 0) {
       this.currentLevel++; //Move to next level
       this.gamestate = GAMESTATE.NEWLEVEL; //displays next level screen
-      //this.start(); // start game again but now at new level
     }
 
     //Hold all objects and all bricks in one array

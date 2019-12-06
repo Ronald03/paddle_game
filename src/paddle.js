@@ -3,16 +3,19 @@
 export default class Paddle {
   constructor(game) {
     this.screenWidth = game.screenWidth;
+
     this.screenHeight = game.screenHeight;
 
     this.width = 150;
+
     this.height = 20;
 
     this.maxSpeed = 7;
+
     this.speed = 0;
 
     this.leftEdge = 0;
-    //this.rightEdge = this.screenWidth - this.width;
+
     this.initPos();
   }
 
@@ -41,6 +44,7 @@ export default class Paddle {
 
   draw(ctx) {
     ctx.fillStyle = "orange";
+
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
@@ -48,6 +52,7 @@ export default class Paddle {
     this.position.x += this.speed;
 
     if (this.position.x <= this.leftEdge) this.position.x = 0;
+
     if (this.position.x >= this.rightEdge()) this.position.x = this.rightEdge();
   }
 }

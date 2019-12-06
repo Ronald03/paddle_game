@@ -1,16 +1,18 @@
 import { detectCollision } from "./collisionDetection.js";
-//import Brick from "./brick.js";
 
 export default class Powerup {
   constructor(brick, game, pwrup) {
-    //this.speedBall = this.power.image;//document.getElementById("speedBall");
-    this.position = brick.position;
-    this.size = 30;
-    this.markedForDeletion = false;
 
+    this.game = game;
+
+    this.position = brick.position;
+
+    this.size = 30;
+    
     this.brick = brick;
 
     this.paddle = game.paddle;
+
     this.ball = game.ball;
 
     this.up = pwrup;
@@ -22,7 +24,12 @@ export default class Powerup {
         paddle: this.paddle,
         ball: this.ball,
         feature: function() {
-          this.ball.speed = { x: 8, y: -1 };
+          let x = this.ball.speed.x;
+          let y = this.ball.speed.y;
+          if( x<0 && y>0) this.ball.speed = {x: -8, y: 8};
+          if( x>0 && y<0) this.ball.speed = {x: 8, y: -8};
+          if( x<0 && y<0) this.ball.speed = {x: -8, y: -8};
+          if( x>0 && y>0) this.ball.speed = {x: 8, y: 8};
         }
       },
       {
@@ -53,9 +60,12 @@ export default class Powerup {
         }
       }
     ];
+
+    this.markedForDeletion = false;
   }
 
   draw(ctx) {
+
     ctx.drawImage(
       this.power[this.up].image,
       this.position.x,
@@ -66,19 +76,22 @@ export default class Powerup {
   }
 
   update(deltatime) {
+
     if (this.brick.markedForDeletion) {
+
       this.position.y += 1.5;
     }
 
     if (detectCollision(this, this.paddle)) {
-      console.log("power up");
+
       this.power[this.up].feature();
+
+      this.markedForDeletion = true;
+
+    }else if (this.position.y > this.game.screenHeight){
+
       this.markedForDeletion = true;
     }
 
-    /* if (this.position.y + 20 === this.paddle.position.y) {
-      this.power[this.up].feature();
-      this.markedForDeletion = true;
-    } */
   }
 }
